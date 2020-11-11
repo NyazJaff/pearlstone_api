@@ -1,24 +1,24 @@
-# README
+# Development setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+rails server -e production    # Run rails in production
 
-Things you may want to cover:
+rake db:setup
 
-* Ruby version
+- node_module
+rm -rf node_modules
+npm install
+./bin/webpack-dev-server     # Start WebPacker
 
-* System dependencies
 
-* Configuration
 
-* Database creation
+webpack --display-error-details # Helps displaying errors
 
-* Database initialization
 
-* How to run the test suite
+# Production 
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ 
+yarn --check-files
+npm install
+rails assets:clobber
+rails assets:precompile # generate webpack files
+RAILS_ENV=production rake webpacker:compile
