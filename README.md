@@ -3,6 +3,8 @@
 rails server -e production    # Run rails in production
 
 rake db:setup
+rake db:migrate
+
 
 - node_module
 rm -rf node_modules
@@ -22,3 +24,6 @@ npm install
 rails assets:clobber
 rails assets:precompile # generate webpack files
 RAILS_ENV=production rake webpacker:compile
+
+# Deployment
+brew install awsebcli

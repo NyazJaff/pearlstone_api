@@ -35,7 +35,8 @@ gem 'grover'              # calls puppeteer then chromium
 gem "slim-rails"          # allows using slim templating
 # gem 'aws-sdk', '~> 3'
 gem 'aws-sdk-s3', '~> 1'
-gem 'dotenv-rails'
+gem 'dotenv-rails'        # for .env file
+gem 'bcrypt', '~> 3.1', '>= 3.1.12'  # for user password
 
 
 
