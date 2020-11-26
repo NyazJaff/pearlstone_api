@@ -7,8 +7,8 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 #
-server "35.179.77.143",
-       user: "rails_api_user",
+server "18.132.14.156",
+       user: "ubuntu",
        roles: %w{web db app},
        ssh_options: {
            keys: %w(/Users/nyazjaff/general/pearlstone_api/api-backend.pem),

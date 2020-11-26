@@ -12,7 +12,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :city           , limit: 40
       t.string :country        , limit: 30
       t.string :postcode       , limit: 15
-      t.string :email          , limit: 30, null: false
+      t.string :email          , limit: 30, null: false, unique: true
       t.string :role                      , default: User.roles[:user]
       t.string :password_digest
 

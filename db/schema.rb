@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(version: 2020_11_16_145457) do
 
   create_table "file_references", force: :cascade do |t|
     t.integer "category", null: false
-    t.integer "user", null: false
+    t.integer "user_id", null: false
     t.string "path", limit: 190, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category", "updated_at"], name: "index_file_references_on_category_and_updated_at"
-    t.index ["category", "user", "path"], name: "index_file_references_category_and_user_and_path"
+    t.index ["category", "user_id", "path"], name: "index_file_references_category_and_user_id_and_path"
   end
 
   create_table "users", force: :cascade do |t|

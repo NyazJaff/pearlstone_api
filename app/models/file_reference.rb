@@ -15,6 +15,6 @@
 #  index_file_references_on_category_and_updated_at             (category, updated_at)
 #
 class FileReference < ApplicationRecord
-
+  belongs_to :user
   enum category: [:saving_estimate]
 end

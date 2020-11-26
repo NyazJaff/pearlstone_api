@@ -43,4 +43,4 @@ require 'capistrano/passenger'
 require 'capistrano/rbenv'
 
 set :rbenv_type, :user
-set :rbenv_ruby, '2.6.5'       # Spcify your ruby version
+set :rbenv_ruby, '2.6.0'       # Spcify your ruby version

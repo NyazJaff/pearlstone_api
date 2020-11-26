@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'invoice/render_pdf/:id', to: 'invoice#render_pdf',  :defaults => { :format => 'html' }
 
   resources :invoice, only: [:show], :defaults => { :format => 'html' }
+  resources :user
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   namespace 'api' do
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
 
 
   # resources :report, only: [:saving_estimate]
-  get 'report/saving_estimate', to: 'report#saving_estimate'
+  post 'report/saving_estimate', to: 'report#saving_estimate'
   get 'report/get_estimate',    to: 'report#get_estimate'
 
 end
