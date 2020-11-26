@@ -8,7 +8,6 @@ class ReportController < ApplicationController
 
   def saving_estimate
     user = get_param_user
-
     raise 'INVALID_USER_PASSED' unless user
 
     Dir.mktmpdir('pdf_render', 'tmp') do |tmp_dir|
@@ -17,14 +16,14 @@ class ReportController < ApplicationController
       grover_pdf(tmp_dir) do |pdf|
         tracked_file = TrackedFileReference.new(user: user, file_path: s3_path, category: :saving_estimate)
         tracked_file.save_file(pdf)
-        UserMailer.sample_email(@file_path).deliver
-        render json: { status: 'SUCCESS', action: action_name, data: @key }, status: :ok
+        UserMailer.sample_email(s3_path, user).deliver
+        render json: { status: 'SUCCESS', action: action_name, data: s3_path }, status: :ok
         # to download instead of opening in browser remove 'disposition: inline
         # send_data(pdf, :filename => "my_fisssle.pdf", :type => "application/pdf",  disposition: "inline")
       end
     end
   rescue => e
-    render json: { status: 'ERROR', action: action_name, data: e }, status: 500
+    render json: { status: 'ERROR', action: action_name, data: e, backtrace: e.backtrace}, status: 500
   end
 
   def grover_pdf(directory)

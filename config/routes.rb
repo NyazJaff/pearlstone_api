@@ -15,9 +15,8 @@ Rails.application.routes.draw do
       end
   end
 
-
   # resources :report, only: [:saving_estimate]
   post 'report/saving_estimate', to: 'report#saving_estimate'
-  get 'report/get_estimate',    to: 'report#get_estimate'
+  get 'report/get_estimate',     to: 'report#get_estimate'
 
 end
