@@ -6,6 +6,7 @@
 
 # Ignore bundler config.
 .env
+.idea
 /.bundle
 
 # Ignore the default SQLite database.

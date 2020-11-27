@@ -25,5 +25,9 @@ rails assets:clobber
 rails assets:precompile # generate webpack files
 RAILS_ENV=production rake webpacker:compile
 
+bundle exec rails webpacker:install
+bundle exec cap deploy production
+sudo service nginx start          # Restart nginx
+gem update --system   # Point bundler to latest installed
 # Deployment
 brew install awsebcli
