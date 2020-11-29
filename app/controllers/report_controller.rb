@@ -27,10 +27,15 @@ class ReportController < ApplicationController
   end
 
   def grover_pdf(directory)
-    grover = Grover.new("http://#{request.host_with_port}/invoice/render_pdf/1?tes", format: 'A4',  timeout: 0)
+    grover = Grover.new("http://#{request.host_with_port}/report/generate_estimate", format: 'A4',  timeout: 0)
     pdf = grover.to_pdf
 
     File.open(Rails.root.join("#{directory}/#{@key}"), 'wb') { |f| f.write(pdf) }
     yield pdf
   end
+
+  def generate_estimate
+
+  end
+
 end
