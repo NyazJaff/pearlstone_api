@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_16_145457) do
+ActiveRecord::Schema.define(version: 2020_12_11_164718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "calculation_results", force: :cascade do |t|
+    t.decimal "annual_duos_shares"
+    t.decimal "annual_triad_share"
+    t.decimal "annual_energy_share"
+    t.decimal "total_annual_benefit"
+    t.decimal "carbon_emission_reduction"
+    t.decimal "annual_reduction_in_miles_driven"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_calculation_results_on_user_id"
+  end
 
   create_table "file_references", force: :cascade do |t|
     t.integer "category", null: false

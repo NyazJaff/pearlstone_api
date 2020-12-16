@@ -14,6 +14,7 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :file_references
+  # has_many :calculation_results
   # has_secure_password :recovery_password, validations: false
 
   # user = User.create(first_name: 'n', email: 'up694452@myport.ac.uk', password: '123', password_confirmation: '123')

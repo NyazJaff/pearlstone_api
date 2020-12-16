@@ -2,8 +2,8 @@
 class UserMailerPreview < ActionMailer::Preview
 
   def user_mail_preview
-    pdf_path = 'estimates/PearlstoneSavingEstimate-2020-11-26 10:54.pdf'
+    pdf_path = 'estimates/PearlstoneSavingEstimate-2020-11-30 21:13.pdf'
     user = User.find(1)
-    UserMailer.sample_email(pdf_path, user)
+    UserMailer.saving_estimate_report_email(pdf_path, user)
   end
 end

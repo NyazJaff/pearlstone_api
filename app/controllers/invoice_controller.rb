@@ -13,7 +13,7 @@ class InvoiceController < ApplicationController
         pdf_path = Rails.root.join("#{@directory}/#{@key}")
 
         puts pdf_path
-        UserMailer.sample_email(pdf_path).deliver
+        # UserMailer.saving_estimate_report_email(pdf_path).deliver
       end
       format.pdf_file do
         # grover_pdf do |pdf|

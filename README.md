@@ -1,4 +1,5 @@
 # Development setup
+git clone https://NyazJaff@github.com/NyazJaff/Pearlstone.git
 
 rails server -e production    # Run rails in production
 
@@ -26,8 +27,11 @@ rails assets:clobber
 RAILS_ENV=production rake webpacker:compile
 RAILS_ENV=production rails assets:precompile # For webpack changes not showing in production
 bundle exec rails webpacker:install
-bundle exec cap deploy production
+bundle exec cap production deploy 
 sudo service nginx start          # Restart nginx
 gem update --system   # Point bundler to latest installed
+
+yarn add @rails/webpacker
+bundle update webpacker
 # Deployment
 brew install awsebcli
