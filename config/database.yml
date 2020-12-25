@@ -8,11 +8,11 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: 'pearlstone_api'
-  password: 'pearlstone_api)110'
+  username: <%= ENV['POSTGRES_USER_NAME'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
   pool: 5
   timeout: 5000
-  host: 'api.cmh6mwbeggbo.eu-west-2.rds.amazonaws.com'
+  host: <%= ENV['POSTGRES_HOST'] %>
 development:
   <<: *default
   database: 'pearlstone_api_dev_db'

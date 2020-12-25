@@ -4,7 +4,7 @@
  User.create(
    first_name:           'Mike',
    last_name:            'Jone',
-   email:                'up694452@myport.ac.uk',
+   email:                'test1@myport.ac.uk',
    building_name:        'Snowflakes',
    address_line_1:       '114 Way Street',
    address_line_2:        '',
@@ -18,8 +18,8 @@
 User.create(
   first_name:           'N',
   last_name:            'Jaff',
-  email:                'up694452@myport.ac.uk',
-  building_name:        '',
+  email:                'test@myport.ac.uk',
+  building_name:        'Snowflakes',
   address_line_1:       'Flat 12',
   address_line_2:        '',
   city:                  'Portsmouth',

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
 
   post 'report/saving_estimate',  to: 'report#saving_estimate'
-  get 'report/generate_estimate', to: 'report#generate_estimate'
+  get 'report/generate_estimate/:calculation_id', to: 'report#generate_estimate'
   post 'report/saving_calculation', to: 'report#saving_calculation'
   # get 'report/get_estimate',     to: 'report#get_estimate'
 end

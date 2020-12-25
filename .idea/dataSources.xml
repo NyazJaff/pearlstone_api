@@ -7,11 +7,11 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://api.cmh6mwbeggbo.eu-west-2.rds.amazonaws.com:5432/pearlstone_api_dev_db</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="pearlstone_api_prod_db@api.cmh6mwbeggbo.eu-west-2.rds.amazonaws.com" uuid="917c0d1f-0472-4b7b-887c-62fc606c679d">
+    <data-source source="LOCAL" name="backendapidev.cmh6mwbeggbo.eu-west-2.rds.amazonaws.com" uuid="f331912b-6067-4d2c-a4c8-8cf8deb07ecb">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://api.cmh6mwbeggbo.eu-west-2.rds.amazonaws.com:5432/pearlstone_api_prod_db</jdbc-url>
+      <jdbc-url>jdbc:postgresql://backendapidev.cmh6mwbeggbo.eu-west-2.rds.amazonaws.com:5432/pearlstone_api_dev_db</jdbc-url>
     </data-source>
   </component>
 </project>

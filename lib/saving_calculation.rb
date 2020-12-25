@@ -6,7 +6,7 @@ class SavingCalculation
     @x_average_kws     = x_average_kws.to_f
     @y_turn_off        = y_turn_off.to_f
     @z_events_per_week = z_events_per_week.to_f
-    @t_events_duration = t_events_duration.to_f
+    @t_events_duration = t_events_duration.to_f / 60 # Value is passed in minutes and stored/used in hours
   end
 
   def result
@@ -14,6 +14,7 @@ class SavingCalculation
         "annual_duos_shares":               annual_duos_shares,
         "annual_triad_share":               annual_triad_share,
         "annual_energy_share":              annual_energy_share,
+        "annual_customer_revenue":          annual_customer_revenue,
         "total_annual_benefit":             total_annual_benefit,
         "carbon_emission_reduction":        carbon_emission_reduction,
         "annual_reduction_in_miles_driven": annual_reduction_in_miles_driven
@@ -21,7 +22,14 @@ class SavingCalculation
   end
 
   def save(user_id = '')
-    result_data = result.merge(user_id: user_id)
+    result_data = result.merge(
+      user_id: user_id,
+      average_kws: @x_average_kws,
+      turn_off: @y_turn_off,
+      events_per_week: @z_events_per_week,
+      events_duration: @t_events_duration,
+      )
+
     CalculationResult.create(result_data.slice(*CalculationResult.column_names.map(&:to_sym)))
   end
 
@@ -42,8 +50,12 @@ class SavingCalculation
       (1 * 9.2 * @x_average_kws * @y_turn_off * @z_events_per_week * @t_events_duration * 48 * 0.01).round(2)
     end
 
+    def annual_customer_revenue
+      (0.5 * @x_average_kws * @y_turn_off * 50).round(2)
+    end
+
     def total_annual_benefit
-      (annual_duos_shares + annual_triad_share + annual_energy_share).round(2)
+      (annual_duos_shares + annual_triad_share + annual_energy_share + annual_customer_revenue).round(2)
     end
 
     def carbon_emission_reduction

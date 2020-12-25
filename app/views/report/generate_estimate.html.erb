@@ -1,44 +1,9 @@
 <!--https://welcm.uk/blog/bootstrap-4-cards-->
 
-<style>
 
-    .padding-0{
-        padding-right:3px;
-        padding-left:3px;
-    }
-    /* Sticky footer styles
-  -------------------------------------------------- */
-    html {
-        position: relative;
-        min-height: 100%;
-    }
-    body {
-        margin-bottom: 60px; /* Margin bottom by footer height */
-    }
-    .footer {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 60px; /* Set the fixed height of the footer here */
-        line-height: 60px; /* Vertically center the text there */
-        background-color: #f5f5f5;
-    }
-
-
-    /* Custom page CSS
-    -------------------------------------------------- */
-    /* Not required for template or sticky footer method. */
-
-    .container {
-        width: auto;
-        max-width: 680px;
-        padding: 0 15px;
-    }
-</style>
 
 <!-- Begin page content -->
 <main role="main" class="container">
-
   <br>
   <div class="row">
     <div class="col-12 mx-auto text-right">
@@ -48,7 +13,7 @@
 
   <br>
   <h5 class="mt-2">Personalised Energy Report</h5>
-  <h6 class="mt-2">{COMPANY NAME} </h6>
+  <h6 class="mt-2"><%= @user.building_name%></h6>
   <br>
 
   <div class="container">
@@ -57,7 +22,7 @@
         <div class="card bg-light">
           <div class="card-body text-center">
             <p class="card-text">The combined financial benefit of potential load-shed strategy is: <br>
-              £{TOTAL £ BENEFIT}
+              £<%= @calculation.total_annual_benefit%>
             </p>
           </div>
         </div>
@@ -66,7 +31,7 @@
         <div class="card bg-light">
           <div class="card-body text-center">
             <p class="card-text">The potential reduction of carbon emissions is: <br>
-              {TOTAL Co2 BENEFIT}kg Co2e
+              <%= @calculation.carbon_emission_reduction%>kg Co2e
             </p>
           </div>
         </div>
@@ -75,24 +40,29 @@
     </div></div>
   <br>
 
-  <p>Thank you for investing time with the Pearlstone team today to explore the potential that lies in your energy usage. Your building’s energy or “Flexible Load”, is the hidden asset within {COMPANY NAME} and could be a source of new revenue for your business.  Pearlstone enables you to access these revenue sources whilst also helping you to save on energy costs, network charges and contribute to the reduction of carbon emissions.
+  <p>Thank you for investing time with the Pearlstone team today to explore the potential that lies in your energy usage.
+    Your building’s energy or “Flexible Load”, is the hidden asset within <%= @user.building_name %> and could be a source
+    of new revenue for your business.  Pearlstone enables you to access these revenue sources whilst also helping you to
+    save on energy costs, network charges and contribute to the reduction of carbon emissions.
   </p>
 
   <br>
-  <h6 class="mt-2">Here are unique results for {INSERT COMPANY NAME}. </h6>
+  <h6 class="mt-2">Here are unique results for <%= @user.building_name %>. </h6>
 
   <br>
-  <p>These figures are based on estimated annual consumption of {TOTAL ENERGY CONSUMPTION} kW across your {INSERT No OF SITES} sites with peek consumption of Y kWh, the total energy opportunity is £ {TOTAL £ BENEFIT} per annum.
+  <p>These figures are based on estimated annual consumption of <%= @calculation.average_kws %> kW across your
+    {INSERT No OF SITES} sites with peek consumption of Y kWh, the total
+    energy opportunity is £ <%= @calculation.total_annual_benefit%> per annum.
   </p>
 
   <br><br>
-  <p>The total  financial benefit {COMPANY NAME} receives is broken down into 3 categories:</p>
+  <p>The total  financial benefit <%= @user.building_name %> receives is broken down into 3 categories:</p>
 
   <br>
   <div class="container">
     <div class="row ">
-      <div class="col padding-0">
-        <div class="card bg-light" style="width: 13rem;">
+      <div class="col">
+        <div class="card bg-light">
           <div class="card-body">
             <h6 class="card-title">System Charge Savings</h6>
             <p class="card-text">By automatically adjusting power
@@ -100,8 +70,8 @@
           </div>
         </div>
       </div>
-      <div class="col padding-0">
-        <div class="card bg-light" style="width: 13rem;">
+      <div class="col">
+        <div class="card bg-light">
           <div class="card-body">
             <h6 class="card-title">Annual Energy Savings</h6>
             <p class="card-text">By automatically adjusting power
@@ -109,8 +79,8 @@
           </div>
         </div>
       </div>
-      <div class="col padding-0">
-        <div class="card bg-light" style="width: 13rem;">
+      <div class="col">
+        <div class="card bg-light">
           <div class="card-body">
             <h6 class="card-title">New Revenue streams</h6>
             <p class="card-text">National Grid balancing services payments.</p>
@@ -127,7 +97,7 @@
     <li>£B in annual energy savings per annum</li>
     <li>£C in new revenue from National Grid per annum</li>
   </ul>
-  <p>Total financial benefit: {TOTAL £ BENEFIT} </p>
+  <p>Total financial benefit: <%= @calculation.total_annual_benefit%> </p>
 
   <br>
   <p><ins><strong>This line of text is meant to be treated as an addition to the document.</strong></ins></p>

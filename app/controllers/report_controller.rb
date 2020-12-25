@@ -9,11 +9,13 @@ class ReportController < ApplicationController
 
   def saving_estimate
     user = get_param_user
+    puts user.id, "user"
     raise 'INVALID_USER_PASSED' unless user
     Dir.mktmpdir('pdf_render', 'tmp') do |tmp_dir|
       @key = "PearlstoneSavingEstimate-#{Time.now.strftime('%Y-%m-%d %H:%M')}.pdf"
       s3_path = S3Storage.estimate_pdf_path(@key)
-      grover_pdf(tmp_dir) do |pdf|
+      @calculation = CalculationResult.find_by(user_id: user.id)
+      grover_pdf(tmp_dir, @calculation.id) do |pdf|
         tracked_file = TrackedFileReference.new(user: user, file_path: s3_path, category: :saving_estimate)
         tracked_file.save_file(pdf)
         UserMailer.saving_estimate_report_email(s3_path, user).deliver
@@ -26,17 +28,28 @@ class ReportController < ApplicationController
     render json: { status: 'error', action: action_name, data: e, backtrace: e.backtrace}, status: 500
   end
 
-  def grover_pdf(directory)
-    grover = Grover.new("http://#{request.host_with_port}/report/generate_estimate", format: 'A4',  timeout: 0,
-                        footer_template: "<div class='text right'>What ever text you want</div>")
+  def grover_pdf(directory, calculation_id)
+    options = {format: 'A4',
+               timeout: 0,
+               # header_template: 'Some header',
+               # headerTemplate: 'instance header',
+               # footerTemplate: 'instance header'
+    }
+
+    grover = Grover.new("http://#{request.host_with_port}/report/generate_estimate/#{calculation_id}", options )
     pdf = grover.to_pdf
 
+    # pdf = Grover::Processor.new(Rails.root).convert(:pdf, "http://#{request.host_with_port}/report/generate_estimate/#{calculation_id}", 'header_template' => '<html><body><div>testestest 1111 </div></body</html>', 'footer_template' => 'instance footer'  )
     File.open(Rails.root.join("#{directory}/#{@key}"), 'wb') { |f| f.write(pdf) }
     yield pdf
   end
 
   def generate_estimate
-
+    @calculation = CalculationResult.find_by_id(params['calculation_id'])
+    @user = User.find_by_id(@calculation.user_id)
+    if @calculation.nil? || @user.nil?
+      render :json => "If you seeing this message then please contact us to resolve it for you: your report id is: #{params['calculation_id']}"
+    end
   end
 
   def saving_calculation
