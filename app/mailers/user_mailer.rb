@@ -1,7 +1,7 @@
 require 's3_storage'
 
 class UserMailer < ApplicationMailer
-  default from: "up694452@myport.ac.uk"
+  default from: "Pearlstone Energy Ltd <nyaz.k.jaff@gmail.com>"
 
   def saving_estimate_report_email(file_key, user)
     @user = user

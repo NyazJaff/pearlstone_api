@@ -9,12 +9,15 @@ class ReportController < ApplicationController
 
   def saving_estimate
     user = get_param_user
-    puts user.id, "user"
-    raise 'INVALID_USER_PASSED' unless user
+    puts params[:reportId], "params[:reportId]"
+    raise 'INVALID_USER_PASSE.' unless user
     Dir.mktmpdir('pdf_render', 'tmp') do |tmp_dir|
       @key = "PearlstoneSavingEstimate-#{Time.now.strftime('%Y-%m-%d %H:%M')}.pdf"
       s3_path = S3Storage.estimate_pdf_path(@key)
-      @calculation = CalculationResult.find_by(user_id: user.id)
+      @calculation = CalculationResult.find_by(id: params[:report_id])
+      @calculation.user_id = user.id
+      @calculation.save
+
       grover_pdf(tmp_dir, @calculation.id) do |pdf|
         tracked_file = TrackedFileReference.new(user: user, file_path: s3_path, category: :saving_estimate)
         tracked_file.save_file(pdf)

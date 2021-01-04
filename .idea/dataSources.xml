@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="pearlstone_api_dev_db@api.cmh6mwbeggbo.eu-west-2.rds.amazonaws.com" uuid="906cc0d4-f9e4-47af-a92c-5ff73945b765">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://api.cmh6mwbeggbo.eu-west-2.rds.amazonaws.com:5432/pearlstone_api_dev_db</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="backendapidev.cmh6mwbeggbo.eu-west-2.rds.amazonaws.com" uuid="f331912b-6067-4d2c-a4c8-8cf8deb07ecb">
+    <data-source source="LOCAL" name="Dev" uuid="f331912b-6067-4d2c-a4c8-8cf8deb07ecb">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://backendapidev.cmh6mwbeggbo.eu-west-2.rds.amazonaws.com:5432/pearlstone_api_dev_db</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Prod" uuid="de5a44cc-0c50-4b78-a9e5-8187e239825b">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://backendappro.cmh6mwbeggbo.eu-west-2.rds.amazonaws.com:5432/pearlstone_api_prod_db</jdbc-url>
     </data-source>
   </component>
 </project>
