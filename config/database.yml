@@ -15,7 +15,7 @@ default: &default
   host: <%= ENV['POSTGRES_HOST'] %>
 development:
   <<: *default
-  database: 'pearlstone_api_dev_db'
+  database: 'pearlstone_api_prod_db'
 test:
   <<: *default
   database: 'pearlstone_api_test_db'

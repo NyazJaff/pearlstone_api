@@ -3,159 +3,190 @@
 
 
 <!-- Begin page content -->
-<main role="main" class="container">
-  <br>
-  <div class="row">
-    <div class="col-12 mx-auto text-right">
-      <img style="max-width:200px;" src="https://user-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/2864602/775006_5528.png">
+<div class="pearlstone-bg-img">
+  <main role="main" class="container ">
+    <br>
+    <div class="row">
+      <div class="col-12 mx-auto text-right">
+        <img style="max-width:200px;" src="https://user-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/2864602/775006_5528.png">
+      </div>
     </div>
-  </div>
 
-  <br>
-  <h5 class="mt-2">Personalised Energy Report</h5>
-  <h6 class="mt-2"><%= @user.building_name%></h6>
-  <br>
+    <br>
+    <br>
+    <br>
+    <address>
+    <span>
+      <%=@user.first_name%> <%=@user.last_name%> <br />
+      <%=@user.building_name%><br />
+      <%=@user.address_line_1%><br />
+      <%=@user.address_line_2%><br />
+      <%=@user.city%><br />
+      <%=@user.postcode%><br />
+    </span>
+    </address>
 
-  <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col col-lg-6">
-        <div class="card bg-light">
-          <div class="card-body text-center">
-            <p class="card-text">The combined financial benefit of potential load-shed strategy is: <br>
-              £<%= @calculation.total_annual_benefit%>
-            </p>
+    <br>
+    <h5 class="mt-2">Personalised Energy Report</h5>
+    <h6 class="mt-2"><%= @user.building_name%></h6>
+    <br>
+
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col col-lg-6">
+          <div class="card card-bg-yellow">
+            <div class="card-body text-center">
+              <p class="card-text">The combined financial benefit of potential load-shed strategy is: <br>
+                <strong><%= number_to_currency(@calculation.total_annual_benefit, :unit=>'£')%></strong>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col col-lg-6">
-        <div class="card bg-light">
-          <div class="card-body text-center">
-            <p class="card-text">The potential reduction of carbon emissions is: <br>
-              <%= @calculation.carbon_emission_reduction%>kg Co2e
-            </p>
-          </div>
-        </div>
-      </div>
-      </div>
-    </div></div>
-  <br>
-
-  <p>Thank you for investing time with the Pearlstone team today to explore the potential that lies in your energy usage.
-    Your building’s energy or “Flexible Load”, is the hidden asset within <%= @user.building_name %> and could be a source
-    of new revenue for your business.  Pearlstone enables you to access these revenue sources whilst also helping you to
-    save on energy costs, network charges and contribute to the reduction of carbon emissions.
-  </p>
-
-  <br>
-  <h6 class="mt-2">Here are unique results for <%= @user.building_name %>. </h6>
-
-  <br>
-  <p>These figures are based on estimated annual consumption of <%= @calculation.average_kws %> kW across your
-    {INSERT No OF SITES} sites with peek consumption of Y kWh, the total
-    energy opportunity is £ <%= @calculation.total_annual_benefit%> per annum.
-  </p>
-
-  <br><br>
-  <p>The total  financial benefit <%= @user.building_name %> receives is broken down into 3 categories:</p>
-
-  <br>
-  <div class="container">
-    <div class="row ">
-      <div class="col">
-        <div class="card bg-light">
-          <div class="card-body">
-            <h6 class="card-title">System Charge Savings</h6>
-            <p class="card-text">By automatically adjusting power
-              consumption in real-time.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card bg-light">
-          <div class="card-body">
-            <h6 class="card-title">Annual Energy Savings</h6>
-            <p class="card-text">By automatically adjusting power
-              consumption in real-time.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card bg-light">
-          <div class="card-body">
-            <h6 class="card-title">New Revenue streams</h6>
-            <p class="card-text">National Grid balancing services payments.</p>
+        <div class="col col-lg-6">
+          <div class="card card-bg-yellow">
+            <div class="card-body text-center">
+              <p class="card-text">The potential reduction of carbon emissions is: <br>
+                <strong><%= number_to_currency(@calculation.carbon_emission_reduction, :unit=> '', precision: 0)%>kg CO<sub>2</sub>e</strong>
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <br>
-  <p>This sum is broken down into:</p>
-  <ul>
-    <li>£A in system charge savings (DUoS and Triad) per annum</li>
-    <li>£B in annual energy savings per annum</li>
-    <li>£C in new revenue from National Grid per annum</li>
-  </ul>
-  <p>Total financial benefit: <%= @calculation.total_annual_benefit%> </p>
+<br>
 
-  <br>
-  <p><ins><strong>This line of text is meant to be treated as an addition to the document.</strong></ins></p>
+<p>Thank you for investing time with the Pearlstone team today to explore the potential that lies in your energy usage.
+  Your building’s energy or “Flexible Load”, is the hidden asset within <%= @user.building_name %> and could be a source
+  of new revenue for your business.  Pearlstone enables you to access these revenue sources whilst also helping you to
+  save on energy costs, network charges and contribute to the reduction of carbon emissions.
+</p>
 
-  <ol>
-    <li>On-site audit
-      Our highly experienced engineers will visit your facility to perform an in-depth audit and work with your business to produce and agree a load-shed and flexibility strategy...
-    </li>
-    <br>
-    <li>Energy Services Agreement
-      All information from analysis to audit will be compiled along with the agreed flexibility strategy and an energy services agreement will be created​...</li>
-    <br>
-    <li>Installation & Completion
-      As soon as the energy services agreement is signed, our engineers will work with your facilities team to get you connected at no cost to your business...  </li>
-    <br>
-    <li>Start Saving
-      Once connected, you can sit back and allow our automated ViBCloud technology to start saving you money and realise new revenues and savings for your business...
-    </li>
-  </ol>
+<br>
+<h6 class="mt-2">Here are unique results for <%= @user.building_name %>. </h6>
 
-  <br>
-  <p><ins><strong>Why choose Pearlstone?</strong></ins></p>
+<br>
+<p>These figures are based on estimated annual consumption of <%= @calculation.average_kws %> kW across your
+  <%= @user.building_name %>  sites with peak consumption of
+  X: <%= @calculation.average_kws %> x
+  Y:<%= @calculation.turn_off %> x
+  Z: <%= @calculation.events_per_week %> x
+  T:<%= @calculation.events_duration %> x
+  48 kWh, the total
+  energy opportunity is <strong><%= number_to_currency(@calculation.total_annual_benefit, :unit=>'£')%></strong> per annum.
+</p>
 
-  <ul>
-    <li>There is ‘Zero Upfront cost’ for installation<br>
-      There is no upfront cost to our customers. Equipment and installation costs are included in the service. Pearlstone operates on a share of savings/revenue model so customers are guaranteed savings.
-    </li>
-    <br>
-    <li>Control…<br>
-      The ViB Cloud dashboard and mobile app will put insight and analytics at the heart of a comprehensive energy strategy. No other DSR aggregator can offer this level of control to building operators.</li>
-    <br>
-    <li>Available…<br>
-      Pearlstone's proprietary ViB service and plug and play technology will allow businesses with multiple buildings of all shapes and sizes to reap the benefits of DSR through significant cost savings and new revenues.</li>
-    <br>
-    <li>Clean…<br>
-      Pearlstone's ViBCloud platform is carbon neutral, promotes sustainable development and supports the removal of all fossil fuels from the UK's energy mix. Unlike many other aggregators, we don't use diesel or gas-powered back-up generators.</li>
-    <br>
-    <li>
-      Secure…<br>
-      Pearlstone has addressed the functional requirements of cyber security at three levels, including: physical, server and client security using multi-layer encryption.
-    </li>
-  </ul>
+<br><br>
+<p>The total  financial benefit <%= @user.building_name %> receives is broken down into 3 categories:</p>
 
-  <br>
-  <p>For more details on how your business can participate in energy services, request a call back from our team of experts at a time to suit you. Please visit our website for more information <a target="_blank" href="https://www.pearlstoneenergy.com">www.pearlstoneenergy.com</a></p>
-
-  <h6><small><i>All figures provided within this document show ballpark guestimate values only based upon the typical flexibility in specific industries. For accurate earnings, a site audit and proposal would need to be conducted.</i></small></h6>
-
-
-  <br><br>
-
-  <div class="row">
-    <div class="col-12 mx-auto text-center">
-      <h6><small><strong>Commercial in Confidence - Pearlstone Energy Limited @ 71-75 Shelton Street, London WC2H 9JQ</strong></small></h6>
-      <h6><small>Publishing Pearlstone Energy Ltd.   © - All rights reserved</small></h6>
+<br>
+<div class="container">
+  <div class="row ">
+    <div class="col">
+      <div class="card card-bg-blue">
+        <div class="card-body">
+          <h6 class="card-title">System Charge Savings</h6>
+          <p class="card-text">By automatically adjusting power
+            consumption in real-time.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card card-bg-blue">
+        <div class="card-body">
+          <h6 class="card-title">Annual Energy Savings</h6>
+          <p class="card-text">By automatically adjusting power
+            consumption in real-time.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card card-bg-blue">
+        <div class="card-body">
+          <h6 class="card-title">New Revenue streams</h6>
+          <p class="card-text">National Grid balancing services payments.</p>
+        </div>
+      </div>
     </div>
   </div>
+</div>
+
+<br>
+<p>This sum is broken down into:</p>
+<ul>
+  <li><strong><%= number_to_currency(@calculation.annual_duos_shares + @calculation.annual_triad_share, :unit=>'£')%></strong> in system charge savings (DUoS and Triad) per annum</li>
+  <li><strong><%= number_to_currency(@calculation.annual_energy_share, :unit=>'£')%></strong> in annual energy savings per annum</li>
+  <li><strong><%= number_to_currency(@calculation.annual_customer_revenue, :unit=>'£')%></strong> in potential new revenue from National Grid per annum</li>
+</ul>
+<p>Total financial benefit: <strong><%= number_to_currency(@calculation.total_annual_benefit, :unit=>'£')%></strong> </p>
+
+<br>
+<p><ins><strong>Our simple 4 step process.</strong></ins></p>
+
+<ol>
+  <li>On-site audit
+    Our highly experienced engineers will visit your facility to perform an in-depth audit and work with your business to produce and agree a load-shed and flexibility strategy...
+  </li>
+  <br>
+  <li>Energy Services Agreement
+    All information from analysis to audit will be compiled along with the agreed flexibility strategy and an energy services agreement will be created​...</li>
+  <br>
+  <li>Installation & Completion
+    As soon as the energy services agreement is signed, our engineers will work with your facilities team to get you connected at no cost to your business...  </li>
+  <br>
+  <li>Start Saving
+    Once connected, you can sit back and allow our automated ViBCloud technology to start saving you money and realise new revenues and savings for your business...
+  </li>
+</ol>
+
+<br>
+<br>
+<br>
+<div class="row">
+  <div class="col-12 mx-auto text-right">
+    <img style="max-width:200px;" src="https://user-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_300,w_300,f_auto,q_100/2864602/775006_5528.png">
+  </div>
+</div>
+<br>
+<p><ins><strong>Why choose Pearlstone?</strong></ins></p>
+
+<ul>
+  <li>There is ‘Zero Upfront cost’ for installation<br>
+    There is no upfront cost to our customers. Equipment and installation costs are included in the service. Pearlstone operates on a share of savings/revenue model so customers are guaranteed savings.
+  </li>
+  <br>
+  <li>Control…<br>
+    The ViB Cloud dashboard and mobile app will put insight and analytics at the heart of a comprehensive energy strategy. No other DSR aggregator can offer this level of control to building operators.</li>
+  <br>
+  <li>Available…<br>
+    Pearlstone's proprietary ViB service and plug and play technology will allow businesses with multiple buildings of all shapes and sizes to reap the benefits of DSR through significant cost savings and new revenues.</li>
+  <br>
+  <li>Clean…<br>
+    Pearlstone's ViBCloud platform is carbon neutral, promotes sustainable development and supports the removal of all fossil fuels from the UK's energy mix. Unlike many other aggregators, we don't use diesel or gas-powered back-up generators.</li>
+  <br>
+  <li>
+    Secure…<br>
+    Pearlstone has addressed the functional requirements of cyber security at three levels, including: physical, server and client security using multi-layer encryption.
+  </li>
+</ul>
+
+<br>
+<p>For more details on how your business can participate in energy services, request a call back from our team of experts at a time to suit you or email us at <a href="mailto:support@pearlstoneenergy.com">support@pearlstoneenergy.com</a>. Please visit our website for more information <a target="_blank" href="https://www.pearlstoneenergy.com">www.pearlstoneenergy.com</a></p>
+
+<h6><small><i>All figures provided within this document show ballpark guestimate values only based upon the typical flexibility in specific industries. For more accurate estimates and potential earnings, a site audit and proposal would need to be conducted.</i></small></h6>
+
+
+<br><br>
+
+<div class="row">
+  <div class="col-12 mx-auto text-center">
+    <h6><small><strong>Commercial in Confidence - Pearlstone Energy Limited @ 71-75 Shelton Street, London WC2H 9JQ</strong></small></h6>
+    <h6><small>Publishing Pearlstone Energy Ltd.   © - All rights reserved</small></h6>
+  </div>
+</div>
 </main>
+</div>
+
 
 <!--<footer class="footer">-->
 <!--  <div class="container">-->

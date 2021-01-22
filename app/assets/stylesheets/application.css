@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+
+html {
+/* allows grover to display all custom css tags when generating pdf*/
+-webkit-print-color-adjust: exact;
+}
+
+
+.card-bg-yellow {
+    background-color: #FFCA0A !important;
+}
+
+.card-bg-blue {
+    background-color: #abd4e9 !important;
+}
+.pearlstone-bg-img {
+    /*opacity: 0.1;*/
+    /*background-image: url('../images/logo.png');*/
+    /*background-color: #ffffff;*/
+    /*height: 500px; !* You must set a specified height *!*/
+    /*background-position: 50% 150%;*/
+    /*background-attachment: fixed;*/
+    /*background-repeat: no-repeat; !* Do not repeat the image *!*/
+    /*background-size: cover; !* Resize the background image to cover the entire container *!*/
+}
+
+address {text-align:right;}
+address > span {text-align:left; display:inline-block;}

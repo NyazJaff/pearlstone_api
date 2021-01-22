@@ -7,7 +7,7 @@ class UserMailer < ApplicationMailer
     @user = user
     S3Storage.tmp_file(file_key) do |attachment|
       attachments[file_key.split('/').last] = File.read(attachment.path)
-      mail(to: user.email, subject: 'Pearlstone - Saving Estimate ')
+      mail(to: user.email, subject: 'Pearlstone - Saving Estimate - ' + Time.now.strftime("%d-%m-%Y").to_s)
     end
   end
 end

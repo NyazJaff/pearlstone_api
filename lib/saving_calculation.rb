@@ -39,19 +39,19 @@ class SavingCalculation
 
   private
     def annual_duos_shares
-      (0.5 * @x_average_kws * @y_turn_off * @z_events_per_week * @t_events_duration * 48 * 3.1 * 0.01).round(2)
+      ((0.5 * @x_average_kws * @y_turn_off * @z_events_per_week * @t_events_duration * 48 * 3.1 * 0.01) / 100).round(2)
     end
 
     def annual_triad_share
-      (0.5 * @x_average_kws * @y_turn_off * 55000 * 0.001).round(2)
+      ((0.5 * @x_average_kws * @y_turn_off * 55000 * 0.001) / 100).round(2)
     end
 
     def annual_energy_share
-      (1 * 9.2 * @x_average_kws * @y_turn_off * @z_events_per_week * @t_events_duration * 48 * 0.01).round(2)
+      ((1 * 9.2 * @x_average_kws * @y_turn_off * @z_events_per_week * @t_events_duration * 48 * 0.01) / 100).round(2)
     end
 
     def annual_customer_revenue
-      (0.5 * @x_average_kws * @y_turn_off * 50).round(2)
+      ((0.5 * @x_average_kws * @y_turn_off * 50) / 100).round(2)
     end
 
     def total_annual_benefit
@@ -59,7 +59,7 @@ class SavingCalculation
     end
 
     def carbon_emission_reduction
-      (0.283 * @x_average_kws * @y_turn_off * @z_events_per_week * @t_events_duration * 48).round(2)
+      ((0.283 * @x_average_kws * @y_turn_off * @z_events_per_week * @t_events_duration * 48) / 100).round(2)
     end
 
     def annual_reduction_in_miles_driven
