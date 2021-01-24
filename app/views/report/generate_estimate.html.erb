@@ -31,6 +31,17 @@
     <h6 class="mt-2"><%= @user.building_name%></h6>
     <br>
 
+<br>
+
+<p>Thank you for investing time with the Pearlstone team today to explore the potential that lies in your energy usage.
+  Your building’s energy or “Flexible Load”, is the hidden asset within <%= @user.building_name %> and could be a source
+  of new revenue for your business.  Pearlstone enables you to access these revenue sources whilst also helping you to
+  save on energy costs, network charges and contribute to the reduction of carbon emissions.
+</p>
+
+<br>
+<h6 class="mt-2">Here are unique results for <%= @user.building_name %>. </h6>
+    <br>
     <div class="container">
       <div class="row justify-content-md-center">
         <div class="col col-lg-6">
@@ -53,26 +64,13 @@
         </div>
       </div>
     </div>
-
-<br>
-
-<p>Thank you for investing time with the Pearlstone team today to explore the potential that lies in your energy usage.
-  Your building’s energy or “Flexible Load”, is the hidden asset within <%= @user.building_name %> and could be a source
-  of new revenue for your business.  Pearlstone enables you to access these revenue sources whilst also helping you to
-  save on energy costs, network charges and contribute to the reduction of carbon emissions.
-</p>
-
-<br>
-<h6 class="mt-2">Here are unique results for <%= @user.building_name %>. </h6>
-
 <br>
 <p>These figures are based on estimated annual consumption of <%= @calculation.average_kws %> kW across your
   <%= @user.building_name %>  sites with peak consumption of
-  X: <%= @calculation.average_kws %> x
-  Y:<%= @calculation.turn_off %> x
-  Z: <%= @calculation.events_per_week %> x
-  T:<%= @calculation.events_duration %> x
-  48 kWh, the total
+   <%= number_to_currency(
+           @calculation.average_kws * (@calculation.turn_off / 100) * @calculation.events_per_week * @calculation.events_duration * 48,
+           :unit=>''
+       )%>kWh, the total
   energy opportunity is <strong><%= number_to_currency(@calculation.total_annual_benefit, :unit=>'£')%></strong> per annum.
 </p>
 
