@@ -18,5 +18,5 @@ class User < ApplicationRecord
   # has_secure_password :recovery_password, validations: false
 
   # user = User.create(first_name: 'n', email: 'up694452@myport.ac.uk', password: '123', password_confirmation: '123')
-  enum roles: [:user, :admin]
+  enum roles: [:user, :admin, :guest]
 end

@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2020_12_11_164718) do
     t.string "email", limit: 30, null: false
     t.string "role", default: "0"
     t.string "password_digest"
+    t.integer "created_user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email"

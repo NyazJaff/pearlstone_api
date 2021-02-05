@@ -47,8 +47,8 @@ class UserController < ApplicationController
     user_id = params["user_id"] ? params["user_id"] : 0
     users = User
               .where(
-                "(lower(first_name) LIKE (?) OR lower(second_name) LIKE (?) OR lower(last_name) LIKE (?)) and id != (?) ",
-                       "%#{name}%", "%#{name}%", "%#{name}%", "#{user_id}")
+                "(lower(first_name) LIKE (?) OR lower(second_name) LIKE (?) OR lower(last_name) LIKE (?)) and id != (?) and role != (?)",
+                       "%#{name}%", "%#{name}%", "%#{name}%", "#{user_id}", "#{User.roles[:guest]}")
               .order({ id: :desc })
               .limit(20)
 
@@ -73,6 +73,7 @@ class UserController < ApplicationController
         :postcode,
         :email,
         :password,
+        :role,
         :password_confirmation
       )
   end
