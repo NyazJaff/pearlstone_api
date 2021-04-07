@@ -42,6 +42,6 @@ require 'capistrano/rails'
 require 'capistrano/passenger'
 require 'capistrano/rbenv'
 
-set :linked_files, %w{.env}
+set :linked_files, %w{.env}    # on server /home/deploy/pearlstone_api/shared
 set :rbenv_type, :user
 set :rbenv_ruby, '2.6.0'       # Spcify your ruby version

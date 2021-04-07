@@ -1,12 +1,25 @@
 # Development setup
 git clone https://NyazJaff@github.com/NyazJaff/Pearlstone.git
 
+Install rbenv
+https://github.com/rbenv/rbenv
+rbenv install 2.6.0
+gem  update --system # if you get bundler outdated error
+#Bundler
+To use Bundler 2 in your lockfile:
+update Rubygems
+gem update --system
+update bundler
+gem install bundler
+update Gemfile.lock in your project
+bundler update --bundler
+-------
+
 rails server -e production    # Run rails in production
 rails server -b 0.0.0.0       # Run rails to be accessed within same network
+gem install bundler --user-install
 rake db:setup
 rake db:migrate
-
-
 
 - node_module
 rm -rf node_modules
@@ -20,7 +33,7 @@ webpack --display-error-details # Helps displaying errors
 
 
 # Production 
-
+chmod 600 api-backend.pem # for ec2 ssh access
 /home/deploy/pearlstone_api/ # Project dir
 yarn --check-files
 npm install
@@ -36,6 +49,7 @@ RAILS_ENV=production rails c      # Access rails c, might have to run 'gem insta
 yarn add @rails/webpacker
 bundle update webpacker
 # Deployment
+
 brew install awsebcli
 
 

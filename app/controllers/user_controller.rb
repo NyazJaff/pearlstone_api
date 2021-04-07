@@ -7,6 +7,8 @@ class UserController < ApplicationController
       params =  user_params
       params['password'] = 'empty' if params['password'].nil?
       user = User.create!(params)
+    else
+      user.update(user_params)
     end
     render json: {status: 'success', user_id: user.id, name: user.first_name}, status: 200
   rescue StandardError => e
